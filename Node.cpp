@@ -1,14 +1,15 @@
 #include "Node.h"
 #include "Node.h"
 
-
-Node::Node(char value)
+template <typename T>
+Node<T>::Node(T value)
 {
 	this->value = value;
 	this->next = nullptr;
 }
 
-Node::Node(char value, Node* next)
+template <typename T>
+Node<T>::Node(T value, Node<T>* next)
 {
 	this->value = value;
 	this->next = next;
