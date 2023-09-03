@@ -1,24 +1,19 @@
 // DataStructures.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 #include <iostream>
-#include "LinkedList.h"
-#include "LinkedList.cpp"
+#include "Queue.h"
+#include "Queue.cpp"
 
 
 int main()
 {
-    auto listChar = LinkedList<char>();
-    listChar.Push('D');
-    listChar.Push('U');
-    listChar.Push('P');
-    listChar.Push('A');
-    listChar.Insert(0, 'O');
-    listChar.Remove(0);
-    listChar.Remove(2);
-
-    listChar.Display();
-
+    Queue<char> q = Queue<char>();
+    q.Enqueue('A');
+    q.Enqueue('B');
+    q.Enqueue('C');
+    std::cout << q.Pop();
     std::cout << "Hello World!\n";
+    q.Display();
 
 }
 
