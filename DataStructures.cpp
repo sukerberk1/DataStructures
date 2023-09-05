@@ -1,19 +1,17 @@
 // DataStructures.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 #include <iostream>
-#include "Queue.h"
-#include "Queue.cpp"
+#include "Stack.cpp"
 
 
 int main()
 {
-    Queue<char> q = Queue<char>();
-    q.Enqueue('A');
-    q.Enqueue('B');
-    q.Enqueue('C');
-    std::cout << q.Pop();
-    std::cout << "Hello World!\n";
-    q.Display();
+    Stack<double> st = Stack<double>();
+    st.Add(8008.5);
+    st.Add(4.20);
+    st.Add(0.0);
+    st.Pop();
+    st.Display();
 
 }
 
