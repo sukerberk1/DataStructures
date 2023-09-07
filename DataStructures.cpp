@@ -1,18 +1,25 @@
 // DataStructures.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 #include <iostream>
-#include "Stack.cpp"
+#include "RingBuffer.cpp"
 
 
 int main()
 {
-    Stack<double> st = Stack<double>();
-    st.Add(8008.5);
-    st.Add(4.20);
-    st.Add(0.0);
-    st.Pop();
-    st.Display();
-
+    RingBuffer<char> a = RingBuffer<char>();
+    a.Push('d');
+    a.Push('u');
+    a.Push('p');
+    a.Push('a');
+    a.AddBefore('A');
+    a.AddBefore('W');
+    a.AddBefore('R');
+    a.AddBefore('U');
+    a.DisplayDebug();
+    a.Push('K');
+    // order: URWAdupaK
+    a.DisplayDebug();
+    std::cin;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
