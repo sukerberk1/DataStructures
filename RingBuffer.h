@@ -23,12 +23,13 @@ public:
 
 	void AddBefore(T element);
 	void Push(T element);
-	void RemoveFromEnd();
-	void RemoveFromBeginning();
+	T PopEnd();
+	T PopBeginning();
 	void Insert(int index, T element);
 	void Display();
 	void DisplayDebug();
 	void WriteAt(int index, T element);
+	T Get(int index);
 
 };
 

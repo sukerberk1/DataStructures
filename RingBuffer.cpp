@@ -32,12 +32,14 @@ void RingBuffer<T>::Enlarge()
 	while (i != tailIndex)
 	{
 		newArr[j] = arr[i];
-		if (i == capacity+1)
+		if (i == capacity)
 			i = 0;
 		else
 			i++;
 		j++;
 	}
+	headIndex = 0;
+	tailIndex = j;
 
 	arr = newArr;
 
@@ -100,18 +102,69 @@ void RingBuffer<T>::AddBefore(T element)
 }
 
 template <typename T>
+T RingBuffer<T>::PopBeginning()
+{
+	if (size == 0) return T();
+	if (headIndex == capacity)
+	{
+		T val = arr[capacity];
+		headIndex = 0;
+		size--;
+		return val;
+	}
+	T val = arr[headIndex];
+	headIndex++;
+	size--;
+	return val;
+}
+
+template <typename T>
+T RingBuffer<T>::PopEnd()
+{
+	if (size == 0) return T();
+	if (tailIndex == 0)
+	{
+		T val = arr[tailIndex];
+		tailIndex = capacity;
+		size--;
+		return val;
+	}
+	T val = arr[tailIndex];
+	tailIndex--;
+	size--;
+	return val;
+}
+
+template <typename T>
+void RingBuffer<T>::WriteAt(int index, T element)
+{
+	int writeIndex = (headIndex + index) % capacity;
+	if (index > size) return;
+	arr[writeIndex] = element;
+}
+
+template <typename T>
+T RingBuffer<T>::Get(int index)
+{
+	int readIndex = (headIndex + index) % capacity;
+	if (index > size) throw;
+	return arr[readIndex];
+}
+
+template <typename T>
 void RingBuffer<T>::Display()
 {
 	std::cout << "Display:" << std::endl;
 	int i = headIndex;
 	while (i != tailIndex)
 	{
-		std::cout << arr[i] << std::endl;
+		std::cout << arr[i] << ' ';
 		if (i == capacity)
 			i = 0;
 		else
 			i++;
 	}
+	std::cout << "\n";
 }
 
 template <typename T>
@@ -119,5 +172,11 @@ void RingBuffer<T>::DisplayDebug()
 {
 	std::cout << "Display - debug:" << std::endl;
 	for (int i = 0; i <= capacity; i++)
-		std::cout << i << ": " << arr[i] << std::endl;
+		if(i==headIndex)
+			std::cout << i << ": " << arr[i] << "<- HEAD" << std::endl;
+		else if (i==tailIndex)
+			std::cout << i << ": " << arr[i] << "<- TAIL" << std::endl;
+		else
+			std::cout << i << ": " << arr[i] << std::endl;
+	std::cout << "SIZE:" << this->Size() << "\n";
 }

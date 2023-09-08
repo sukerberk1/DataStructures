@@ -6,19 +6,24 @@
 
 int main()
 {
-    RingBuffer<char> a = RingBuffer<char>();
-    a.Push('d');
-    a.Push('u');
-    a.Push('p');
-    a.Push('a');
-    a.AddBefore('A');
-    a.AddBefore('W');
-    a.AddBefore('R');
-    a.AddBefore('U');
-    a.DisplayDebug();
-    a.Push('K');
-    // order: URWAdupaK
-    a.DisplayDebug();
+    RingBuffer<int> buf = RingBuffer<int>();
+
+    buf.Push(4);
+    buf.Push(20);
+    buf.Push(80);
+    buf.Push(0);
+    buf.Push(58);
+
+    buf.Display();
+
+    buf.WriteAt(3, 7);
+
+    buf.Display();
+
+    auto result = buf.Get(4);
+
+    std::cout << "Result of get(4): " << result;
+
     std::cin;
 }
 
