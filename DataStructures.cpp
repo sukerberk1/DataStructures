@@ -12,7 +12,7 @@ int main()
     buf.Push(20);
     buf.Push(80);
     buf.Push(0);
-    buf.Push(58);
+    buf.Push(85);
 
     buf.Display();
 
@@ -20,9 +20,14 @@ int main()
 
     buf.Display();
 
+    buf.Insert(0, 20);
     auto result = buf.Get(4);
 
-    std::cout << "Result of get(4): " << result;
+    std::cout << "Result of get(4): " << result << std::endl;
+
+
+
+    buf.Display();
 
     std::cin;
 }

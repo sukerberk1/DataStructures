@@ -51,9 +51,7 @@ void RingBuffer<T>::Push(T element)
 {
 	if (size == 0)
 	{
-		arr[0] = element;
-		tailIndex = 1;
-		size++;
+		CreateWithElement(element);
 		return;
 	}
 	else if (size == capacity)
@@ -77,9 +75,7 @@ void RingBuffer<T>::AddBefore(T element)
 {
 	if (size == 0)
 	{
-		arr[0] = element;
-		tailIndex = 1;
-		size++;
+		CreateWithElement(element);
 		return;
 	}
 	else if (size == capacity)
@@ -98,6 +94,14 @@ void RingBuffer<T>::AddBefore(T element)
 		arr[headIndex - 1] = element;
 		headIndex--;
 	}
+	size++;
+}
+
+template <typename T>
+void RingBuffer<T>::CreateWithElement(T element)
+{
+	arr[0] = element;
+	tailIndex = 1;
 	size++;
 }
 
@@ -149,6 +153,48 @@ T RingBuffer<T>::Get(int index)
 	int readIndex = (headIndex + index) % capacity;
 	if (index > size) throw;
 	return arr[readIndex];
+}
+
+template <typename T>
+void RingBuffer<T>::Insert(int index, T element)
+{
+	if (size == 0)
+	{
+		CreateWithElement(element);
+		return;
+	}
+	if (size == capacity)
+	{
+		Enlarge();
+		return Insert(index, element);
+	}
+	if (index > size) throw;
+	int insertIndex = (headIndex + index) % capacity;
+
+	T tempElem = arr[insertIndex];
+	arr[insertIndex] = element;
+	
+	if (insertIndex == capacity)
+		insertIndex = 0;
+	else
+		insertIndex++;
+
+	while (insertIndex != tailIndex+1)
+	{	
+		T elemToSwitch = arr[insertIndex];
+		arr[insertIndex] = tempElem;
+		tempElem = elemToSwitch;
+
+		if (insertIndex == capacity)
+			insertIndex = 0;
+		else
+			insertIndex++;
+	}
+	if (tailIndex == capacity)
+		tailIndex = 0;
+	else
+		tailIndex++;
+	size++;
 }
 
 template <typename T>

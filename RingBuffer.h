@@ -11,6 +11,7 @@ class RingBuffer
 	int tailIndex;
 
 	void Enlarge();
+	void CreateWithElement(T element);
 
 public:
 	int Size()
