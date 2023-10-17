@@ -1,34 +1,14 @@
-// DataStructures.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
 #include <iostream>
-#include "RingBuffer.cpp"
+#include "SortingAlgorithms.cpp"
 
 
 int main()
 {
-    RingBuffer<int> buf = RingBuffer<int>();
-
-    buf.Push(4);
-    buf.Push(20);
-    buf.Push(80);
-    buf.Push(0);
-    buf.Push(85);
-
-    buf.Display();
-
-    buf.WriteAt(3, 7);
-
-    buf.Display();
-
-    buf.Insert(0, 20);
-    auto result = buf.Get(4);
-
-    std::cout << "Result of get(4): " << result << std::endl;
-
-
-
-    buf.Display();
-
+    int arrLen = 10;
+    int* arr = new int[arrLen] { 3,10,8,7,12,5,7,91,31, 2 }; // length: 10
+    QuickSort::Sort(arr, 0, arrLen-1);
+    for (int i = 0; i < 10;i++)
+        std::cout << arr[i] << std::endl;
     std::cin;
 }
 
