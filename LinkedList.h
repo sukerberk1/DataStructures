@@ -7,23 +7,23 @@ template <typename T>
 class LinkedList
 {
 public:
-	Node<T>* head;
-	Node<T>* tail;
+	LinkedListNode<T>* head;
+	LinkedListNode<T>* tail;
 
 	LinkedList();
 	LinkedList(T initialValue);
-	LinkedList(Node<T>* initialNode);
+	LinkedList(LinkedListNode<T>* initialNode);
 
 	void Push(T value);
-	void Push(Node<T>* node);
+	void Push(LinkedListNode<T>* node);
 	char Get(int index);
-	Node<T>* GetNode(int index);
+	LinkedListNode<T>* GetNode(int index);
 
-	void Insert(int index, Node<T>* node);
+	void Insert(int index, LinkedListNode<T>* node);
 	void Insert(int index, T value);
 
 	void Remove(int index);
-	void Remove(Node<T>* node);
+	void Remove(LinkedListNode<T>* node);
 	
 	void Display();
 };

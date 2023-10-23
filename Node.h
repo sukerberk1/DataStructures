@@ -3,14 +3,14 @@
 #define NODE_H
 
 template <typename T>
-class Node
+class LinkedListNode
 {
 public:
 	T value;
-	Node<T>* next;
+	LinkedListNode<T>* next;
 
-	Node(T value);
-	Node(T value, Node<T>* next);
+	LinkedListNode(T value);
+	LinkedListNode(T value, LinkedListNode<T>* next);
 };
 
 #endif

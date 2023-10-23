@@ -10,12 +10,12 @@ LinkedList<T>::LinkedList()
 }
 
 template <typename T>
-LinkedList<T>::LinkedList(Node<T>* initialNode) : head(initialNode), tail(initialNode) {}
+LinkedList<T>::LinkedList(LinkedListNode<T>* initialNode) : head(initialNode), tail(initialNode) {}
 
 template <typename T>
 LinkedList<T>::LinkedList(T initialValue)
 {
-	Node<T>* n = new Node<T>(initialValue);
+	LinkedListNode<T>* n = new LinkedListNode<T>(initialValue);
 	this->head = n;
 	this->tail = n;
 }
@@ -25,13 +25,13 @@ LinkedList<T>::LinkedList(T initialValue)
 template <typename T>
 void LinkedList<T>::Push(T value)
 {
-	Node<T>* n = new Node<T>(value);
+	LinkedListNode<T>* n = new LinkedListNode<T>(value);
 	this->Push(n);
 }
 
 /* Adds a node to the end of the sequence*/
 template <typename T>
-void LinkedList<T>::Push(Node<T>* node)
+void LinkedList<T>::Push(LinkedListNode<T>* node)
 {
 	if (this->head == nullptr)
 	{
@@ -52,9 +52,9 @@ char LinkedList<T>::Get(int index)
 
 /* May return null pointer if index is out of bonds */
 template <typename T>
-Node<T>* LinkedList<T>::GetNode(int index)
+LinkedListNode<T>* LinkedList<T>::GetNode(int index)
 {
-	Node<T>* current = this->head;
+	LinkedListNode<T>* current = this->head;
 	while (index > 0 && current != nullptr)
 	{
 		current = current->next;
@@ -67,7 +67,7 @@ Node<T>* LinkedList<T>::GetNode(int index)
 template <typename T>
 void LinkedList<T>::Display()
 {
-	Node<T>* n = this->head;
+	LinkedListNode<T>* n = this->head;
 	while (n != nullptr)
 	{
 		std::cout << n->value << std::endl;
@@ -77,9 +77,9 @@ void LinkedList<T>::Display()
 
 /* Inserts a node in the given index. If index is larger than the array, append it to the end. If index is less than 0, append it to the beginning */
 template <typename T>
-void LinkedList<T>::Insert(int index, Node<T>* node)
+void LinkedList<T>::Insert(int index, LinkedListNode<T>* node)
 {
-	Node<T>* n = this->head;
+	LinkedListNode<T>* n = this->head;
 	if (index <= 0)
 	{
 		node->next = n;
@@ -97,7 +97,7 @@ void LinkedList<T>::Insert(int index, Node<T>* node)
 		n = n->next;
 		i++;
 	}
-	Node<T>* nodeAfter = n->next;
+	LinkedListNode<T>* nodeAfter = n->next;
 	n->next = node;
 	node->next = nodeAfter;
 }
@@ -106,14 +106,14 @@ void LinkedList<T>::Insert(int index, Node<T>* node)
 template <typename T>
 void LinkedList<T>::Insert(int index, T value)
 {
-	Node<T>* n = new Node<T>(value);
+	LinkedListNode<T>* n = new LinkedListNode<T>(value);
 	this->Insert(index, n);
 }
 /* Deletes a node based on certain index */
 template <typename T>
 void LinkedList<T>::Remove(int index)
 {
-	Node<T>* n = this->head;
+	LinkedListNode<T>* n = this->head;
 	if (index == 0)
 	{
 		this->head = this->head->next;
@@ -133,9 +133,9 @@ void LinkedList<T>::Remove(int index)
 
 /* Deletes node from list based on its reference */
 template <typename T>
-void LinkedList<T>::Remove(Node<T>* node)
+void LinkedList<T>::Remove(LinkedListNode<T>* node)
 {
-	Node<T>* n = this->head;
+	LinkedListNode<T>* n = this->head;
 	while (true)
 	{
 		if (n->next == node)

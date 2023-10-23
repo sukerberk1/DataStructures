@@ -2,14 +2,14 @@
 #include "Node.h"
 
 template <typename T>
-Node<T>::Node(T value)
+LinkedListNode<T>::LinkedListNode(T value)
 {
 	this->value = value;
 	this->next = nullptr;
 }
 
 template <typename T>
-Node<T>::Node(T value, Node<T>* next)
+LinkedListNode<T>::LinkedListNode(T value, LinkedListNode<T>* next)
 {
 	this->value = value;
 	this->next = next;

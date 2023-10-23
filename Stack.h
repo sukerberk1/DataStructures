@@ -5,8 +5,8 @@
 template <typename T>
 struct Stack
 {
-	Node<T>* head;
-	Node<T>* tail;
+	LinkedListNode<T>* head;
+	LinkedListNode<T>* tail;
 
 	Stack();
 

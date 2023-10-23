@@ -8,12 +8,12 @@ Queue<T>::Queue() : head(nullptr), tail(nullptr), size(0) { }
 template <typename T>
 void Queue<T>::Enqueue(T value)
 {
-	Node<T>* n = new Node<T>(value);
+	LinkedListNode<T>* n = new LinkedListNode<T>(value);
 	this->Enqueue(n);
 }
 
 template <typename T>
-void Queue<T>::Enqueue(Node<T>* node)
+void Queue<T>::Enqueue(LinkedListNode<T>* node)
 {
 	if (head == nullptr)
 	{
@@ -33,9 +33,9 @@ T Queue<T>::Pop()
 }
 
 template <typename T>
-Node<T> Queue<T>::PopNode()
+LinkedListNode<T> Queue<T>::PopNode()
 {
-	Node<T>* n = head;
+	LinkedListNode<T>* n = head;
 	head = head->next;
 	size--;
 	n->next = nullptr;

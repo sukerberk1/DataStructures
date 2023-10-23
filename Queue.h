@@ -6,16 +6,16 @@
 template <typename T>
 struct Queue
 {
-	Node<T>* head;
-	Node<T>* tail;
+	LinkedListNode<T>* head;
+	LinkedListNode<T>* tail;
 	int size;
 
 	Queue();
 
 	T Pop();
-	Node<T> PopNode();
+	LinkedListNode<T> PopNode();
 	void Enqueue(T value);
-	void Enqueue(Node<T>* node);
+	void Enqueue(LinkedListNode<T>* node);
 	void Display();
 };
 
