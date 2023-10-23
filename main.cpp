@@ -1,15 +1,18 @@
 #include <iostream>
-#include "SortingAlgorithms.cpp"
+#include "TreeNode.cpp"
 
 
 int main()
 {
-    int arrLen = 10;
-    int* arr = new int[arrLen] { 3,10,8,7,12,5,7,91,31, 2 }; // length: 10
-    QuickSort::Sort(arr, 0, arrLen-1);
-    for (int i = 0; i < 10;i++)
-        std::cout << arr[i] << std::endl;
-    std::cin;
+    TreeNode<int>* n = new TreeNode<int>(10);
+    TreeNode<int>* c1 = new TreeNode<int>(20);
+    TreeNode<int>* c2 = new TreeNode<int>(30);
+    TreeNode<int>* c3 = new TreeNode<int>(40);
+    n->AddChild(c1);
+    n->AddChild(c2);
+    n->AddChild(c3);
+    n->Display();
+    n->DisplayChildren();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
