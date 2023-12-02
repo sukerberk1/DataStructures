@@ -1,18 +1,23 @@
 #include <iostream>
-#include "TreeNode.cpp"
+#include "TreeNode.h"
+#include "Treenode.cpp"
+#include "BinaryTree.h"
+#include "BinaryTree.cpp"
 
 
 int main()
 {
-    TreeNode<int>* n = new TreeNode<int>(10);
-    TreeNode<int>* c1 = new TreeNode<int>(20);
-    TreeNode<int>* c2 = new TreeNode<int>(30);
-    TreeNode<int>* c3 = new TreeNode<int>(40);
-    n->AddChild(c1);
-    n->AddChild(c2);
-    n->AddChild(c3);
-    n->Display();
-    n->DisplayChildren();
+	BinaryTree<short> tree = BinaryTree<short>(5);
+	auto addedNode1 = tree.AddNode(10, tree.GetRoot());
+	auto addedNode2 = tree.AddNode(11, tree.GetRoot());
+	tree.AddNode(20, addedNode1);
+	tree.AddNode(21, addedNode2);
+	
+	//tree.DisplayAsCatalogue();
+
+	tree.InOrderTraversalDisplay();
+	tree.PostOrderTraversalDisplay();
+	tree.PreOrderTraversalDisplay();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
